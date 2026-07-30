@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatDate } from '../../utils/format';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout
+  title="Blog"
+  description="Notes on data science, statistics, quantitative finance, and whatever else I'm learning."
+>
+  <h1>Blog</h1>
+  <p>
+    Notes on what I'm learning — data science, statistics, quantitative finance, and the
+    occasional dispatch from the boathouse. Every few weeks, something real.
+  </p>
+
+  <ul class="post-list">
+    {
+      posts.map((post) => (
+        <li>
+          <a class="post-title" href={`/blog/${post.id}/`}>
+            {post.data.title}
+          </a>
+          <div class="post-meta">
+            <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+          </div>
+          <p>{post.data.description}</p>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>

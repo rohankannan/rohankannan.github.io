@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DetailCard from '../components/DetailCard.astro';
+---
+
+<BaseLayout
+  title="Courses"
+  description="Coursework at Purdue — probability, statistics, analysis, and the math underneath data science."
+>
+  <h1>Courses</h1>
+  <p>
+    Selected coursework from my DS &amp; Math double major at Purdue. The throughline: I want the
+    theory underneath data science, not just the tooling.
+  </p>
+
+  <DetailCard
+    title="Probability"
+    meta="Purdue · completed"
+    summary="Random variables, distributions, expectation, limit theorems."
+  >
+    <p>
+      The foundation everything else on this page builds on — distributions, conditioning,
+      expectation, and the limit theorems that make statistics work.
+    </p>
+  </DetailCard>
+
+  <DetailCard
+    title="Statistics in R"
+    meta="Purdue · completed"
+    summary="Applied statistical computing and inference in R."
+  >
+    <p>
+      Hands-on statistical inference in R — estimation, hypothesis testing, and regression on
+      real datasets.
+    </p>
+  </DetailCard>
+
+  <DetailCard
+    title="Data Science"
+    meta="Purdue · completed"
+    summary="The end-to-end workflow: wrangling, modeling, validation."
+  >
+    <p>
+      The complete pipeline from raw data to defensible conclusions — data wrangling, modeling,
+      and validation.
+    </p>
+  </DetailCard>
+
+  <DetailCard
+    title="Real Analysis"
+    meta="Purdue · completed"
+    summary="Rigor: limits, continuity, convergence, proof-writing."
+  >
+    <p>
+      Proof-based analysis — the course that teaches you what the calculus you learned actually
+      says, and how to argue it precisely.
+    </p>
+  </DetailCard>
+
+  <DetailCard
+    title="Linear Algebra"
+    meta="Purdue · completed"
+    summary="Vector spaces, eigenvalues, decompositions."
+  >
+    <p>
+      Vector spaces, linear maps, and eigendecompositions — the language most of machine learning
+      is written in.
+    </p>
+  </DetailCard>
+
+  <DetailCard
+    title="Stochastic Calculus"
+    meta="Self-study"
+    summary="Brownian motion, Itô calculus, SDEs — taught myself."
+  >
+    <p>
+      Self-taught: Brownian motion, Itô integration, and stochastic differential equations — the
+      mathematics underneath derivatives pricing and much of quantitative finance.
+    </p>
+  </DetailCard>
+
+  <h2>Up next (2026–27)</h2>
+  <ul>
+    <li>Statistical Theory</li>
+    <li>Numerical Methods</li>
+    <li>Advanced Linear Algebra</li>
+  </ul>
+</BaseLayout>

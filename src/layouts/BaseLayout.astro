@@ -1,0 +1,136 @@
+---
+import '@fontsource-variable/source-serif-4';
+import '@fontsource-variable/source-serif-4/wght-italic.css';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'Rohan Kannan — Data Science & Math double major at Purdue.',
+} = Astro.props;
+
+const siteName = 'Rohan Kannan';
+const email = 'ro1kannan@gmail.com';
+
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/about/', label: 'About' },
+  { href: '/experience/', label: 'Experience' },
+  { href: '/courses/', label: 'Courses' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/now/', label: 'Now' },
+];
+
+const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const isCurrent = (href: string) => {
+  const clean = href.replace(/\/+$/, '') || '/';
+  if (clean === '/') return currentPath === '/';
+  return currentPath === clean || currentPath.startsWith(clean + '/');
+};
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · {siteName}</title>
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {
+      Astro.site && (
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Rohan Kannan"
+          href={new URL('rss.xml', Astro.site)}
+        />
+      )
+    }
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    {
+      Astro.site && (
+        <meta property="og:image" content={new URL('/images/headshot.jpg', Astro.site)} />
+      )
+    }
+    <meta name="twitter:card" content="summary" />
+    <!-- GoatCounter analytics (privacy-friendly, free): create an account at
+         https://www.goatcounter.com, then uncomment this and replace
+         PLACEHOLDER-CODE with your account code.
+    <script is:inline data-goatcounter="https://PLACEHOLDER-CODE.goatcounter.com/count"
+            async src="https://gc.zgo.at/count.js"></script>
+    -->
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="inner">
+        <a class="site-name" href="/">{siteName}</a>
+        <nav class="site-nav" aria-label="Site">
+          {
+            nav.map((item) => (
+              <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <button id="copy-email" type="button" data-email={email}>
+          <span id="copy-email-label">{email}</span><span class="visually-hidden">
+            (copy to clipboard)</span>
+        </button>
+        <span id="copy-status" role="status" class="visually-hidden"></span>
+        <span aria-hidden="true">·</span>
+        <a href="https://github.com/rohankannan">GitHub</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://www.linkedin.com/in/rohantkannan/">LinkedIn</a>
+        <span aria-hidden="true">·</span>
+        <a href="/resume.pdf">Résumé (PDF)</a>
+        <span aria-hidden="true">·</span>
+        <a href="/rss.xml">RSS</a>
+      </div>
+    </footer>
+
+    <script>
+      // The site's only JavaScript: click-to-copy for the footer email.
+      const btn = document.getElementById('copy-email');
+      const label = document.getElementById('copy-email-label');
+      const status = document.getElementById('copy-status');
+      if (btn && label && status) {
+        btn.addEventListener('click', async () => {
+          const email = btn.dataset.email ?? '';
+          try {
+            await navigator.clipboard.writeText(email);
+            label.textContent = 'Copied!';
+            status.textContent = 'Email address copied to clipboard';
+            setTimeout(() => {
+              label.textContent = email;
+              status.textContent = '';
+            }, 1500);
+          } catch {
+            window.location.href = `mailto:${email}`;
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

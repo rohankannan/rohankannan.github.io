@@ -1,0 +1,24 @@
+---
+interface Props {
+  title: string;
+  /** Small muted line under the title, e.g. "Summer 2026 · Some Lab" */
+  meta?: string;
+  /** One-line teaser shown while the card is collapsed */
+  summary?: string;
+  /** Render the card expanded by default */
+  open?: boolean;
+}
+
+const { title, meta, summary, open = false } = Astro.props;
+---
+
+<details class="detail-card" open={open}>
+  <summary>
+    <span class="dc-title">{title}</span>
+    {meta && <span class="dc-meta">{meta}</span>}
+    {summary && <span class="dc-summary">{summary}</span>}
+  </summary>
+  <div class="dc-body">
+    <slot />
+  </div>
+</details>

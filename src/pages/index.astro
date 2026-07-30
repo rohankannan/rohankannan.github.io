@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { formatDate } from '../utils/format';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+<BaseLayout
+  title="Home"
+  description="Data Science & Math double major at Purdue — treasury data tooling at Cisco, varsity rower."
+>
+  <h1>Rohan Kannan</h1>
+  <p>
+    I'm a Data Science &amp; Math double major at Purdue focused on statistics and its applications. This
+    summer I built the treasury team's data tooling at Cisco — risk models, bank analytics, and
+    an AI workflow for broker analysis. I also row for Purdue. 
+  </p>
+  <p>
+    <a class="button" href="/resume.pdf">Download résumé (PDF)</a>
+  </p>
+
+  <h2>What I'm working toward</h2>
+  <ul>
+    <li>A Summer 2027 internship in quantitative research or data science.</li>
+    <li>
+      Building out the theory under my toolkit — statistical theory, numerical methods, and
+      advanced linear algebra this year.
+    </li>
+    <li>Doing research worth publishing, and writing more here on this site.</li>
+  </ul>
+
+  <h2>Recent</h2>
+  <ul class="post-list">
+    {
+      posts.map((post) => (
+        <li>
+          <a class="post-title" href={`/blog/${post.id}/`}>
+            {post.data.title}
+          </a>
+          <div class="post-meta">
+            <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+            {' · From the blog'}
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>

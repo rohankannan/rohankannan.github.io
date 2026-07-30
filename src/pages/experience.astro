@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DetailCard from '../components/DetailCard.astro';
+---
+
+<BaseLayout
+  title="Experience"
+  description="Internships and roles — treasury data tooling at Cisco, webmaster for Purdue Crew."
+>
+  <h1>Experience</h1>
+  <p>Most recent first.</p>
+
+  <DetailCard
+    title="Treasury Intern · Cisco"
+    meta="June – August 2026 · New York, NY (hybrid)"
+    summary="Built the treasury team's data tooling — risk models, bank analytics, and an AI workflow for broker analysis."
+    open
+  >
+    <p>
+      Cisco's treasury team manages the company's cash, investments, and share buybacks. Over the
+      summer I built out the team's data tooling in Python (pandas, NumPy), shipped as a
+      command-line tool the whole team uses:
+    </p>
+    <ul>
+      <li>
+        <strong>Bank revenue dashboard</strong> (Excel) — evaluates roughly twenty counterparty
+        banks on our trades and their long-run markups.
+      </li>
+      <li>
+        <strong>Value-at-Risk model</strong> — moved the team's risk forecasting from historical
+        volatility to implied volatility, making the estimates forward-looking instead of
+        backward-looking.
+      </li>
+      <li>
+        <strong>Transaction classifier</strong> — K-Means clustering distilled into a
+        decision-tree surrogate, so every classification stays explainable. It categorized
+        100,000+ transactions and identified miscategorized transactions that the cash team
+        confirmed and reclassified.
+      </li>
+      <li>
+        <strong>Agentic AI workflow</strong> — turns a static buyback sheet into full broker
+        analysis automatically.
+      </li>
+    </ul>
+  </DetailCard>
+
+  <DetailCard
+    title="Webmaster · Purdue Crew"
+    meta="March 2026 – present · West Lafayette, IN"
+    summary="I run the rowing team's website and am building its athlete portal."
+  >
+    <p>
+      I design and maintain <a href="https://purduecrew.com">purduecrew.com</a>, the website for
+      Purdue's rowing team, and I'm building a portal where athletes, coaches, and parents can
+      interact with a database of athlete metrics, race schedules, and workout plans.
+    </p>
+  </DetailCard>
+</BaseLayout>
