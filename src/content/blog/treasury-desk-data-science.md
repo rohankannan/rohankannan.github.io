@@ -14,7 +14,7 @@ I built a transaction classifier, kind of like what you'd see in a banking app, 
 The transaction classifier I built uses K-Means clustering wrapped in a decision-tree surrogate.
 On paper that's a downgrade — you're approximating your own model. 
 In practice it was the whole point: when a tool categorizes 100,000+ transactions, nobody acts on its output until they can see *why* a transaction landed where it did. 
-The surrogate tree turned "the model said so" into an explanation a reviewer could check, and that's what made it trustworthy enough to surface a substantial volume of misclassifications, which our cash team then verified and resolved.
+The surrogate tree turned "the model said so" into an explanation a reviewer could check, and that's what made it trustworthy enough for the cash team to review its recommendations and adopt them at scale.
 
 ## Meet people inside their tools
 
