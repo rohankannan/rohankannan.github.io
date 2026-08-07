@@ -26,7 +26,7 @@ than some web app: the goal is answers in front of people, with as little ceremo
 ## Forecasts should look forward
 
 The team's Value-at-Risk model forecast risk from historical volatility — how much things moved in the past. 
-Rebuilding it around implied volatility means the model now asks the market what it expects instead of assuming yesterday repeats. 
+Upgrading it to implied volatility, with Monte Carlo simulation underneath, means the model now asks the market what it expects instead of assuming yesterday repeats. 
 That switch is one line in a formula and a complete change in worldview, and it generalizes: a lot of models quietly assume the future is a rerun.
 
 ---
