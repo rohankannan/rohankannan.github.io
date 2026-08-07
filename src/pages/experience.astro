@@ -5,7 +5,7 @@ import DetailCard from '../components/DetailCard.astro';
 
 <BaseLayout
   title="Experience"
-  description="Internships and roles — treasury data tooling at Cisco, webmaster for Purdue Crew."
+  description="Risk modeling at Cisco treasury — Value-at-Risk, counterparty analytics; webmaster for Purdue Crew."
 >
   <h1>Experience</h1>
   <p>Most recent first.</p>
@@ -13,29 +13,31 @@ import DetailCard from '../components/DetailCard.astro';
   <DetailCard
     title="Treasury Intern · Cisco"
     meta="June – August 2026 · New York, NY (hybrid)"
-    summary="Built the treasury team's data tooling — risk models, bank analytics, and an AI workflow for broker analysis."
+    summary="Rebuilt the team's Value-at-Risk model and shipped the risk and counterparty analytics around it."
     open
   >
     <p>
-      Cisco's treasury team manages the company's cash, investments, and share buybacks. Over the
-      summer I built out the team's data tooling in Python (pandas, NumPy), shipped as a
-      command-line tool the whole team uses:
+      Cisco's treasury team manages the company's cash, investments, and share buybacks — a
+      portfolio whose risk gets measured every day. Over the summer I built the team's risk and
+      analytics tooling in Python (pandas, NumPy), shipped as a command-line tool the whole team
+      uses:
     </p>
     <ul>
       <li>
-        <strong>Bank revenue dashboard</strong> (Excel) — evaluates roughly twenty counterparty
-        banks on our trades and their long-run markups.
+        <strong>Value-at-Risk model</strong> — rebuilt the team's risk forecasting around implied
+        volatility instead of historical volatility, so the estimates reflect what the market
+        expects rather than what it did last quarter.
       </li>
       <li>
-        <strong>Value-at-Risk model</strong> — moved the team's risk forecasting from historical
-        volatility to implied volatility, making the estimates forward-looking instead of
-        backward-looking.
+        <strong>Counterparty bank analytics</strong> (Excel) — evaluates roughly twenty
+        counterparty banks on our trades and their long-run markups.
       </li>
       <li>
         <strong>Transaction classifier</strong> — K-Means clustering distilled into a
         decision-tree surrogate, so every classification stays explainable. It categorized
         100,000+ transactions and strengthened the accuracy of the team's transaction data, with
-        its recommendations reviewed and adopted by the cash team.
+        its recommendations reviewed and adopted by the cash team. A risk number is only as good
+        as the data underneath it.
       </li>
       <li>
         <strong>Agentic AI workflow</strong> — turns a static buyback sheet into full broker
